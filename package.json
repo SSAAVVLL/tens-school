@@ -140,5 +140,13 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "msw": "^2.2.14"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

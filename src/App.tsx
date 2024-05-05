@@ -1,7 +1,7 @@
 import React, {createContext, useState, useCallback} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Button from './Components/Button';
+import Affiliate from './Pages/Affiliate';
 import { ThemeContext } from './Context';
 
 interface themeObject {
@@ -36,8 +36,7 @@ function App() {
           </a>
         </header>
         <section>
-          <Button/>
-          <button onClick={btnHandleClick}>Корневая кнопка</button>
+          <Affiliate/>
         </section>
       </div>
     </ThemeContext.Provider>

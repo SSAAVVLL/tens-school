@@ -101,4 +101,12 @@ function getClientEnvironment(publicUrl) {
   return { raw, stringified };
 }
 
-module.exports = getClientEnvironment;
+// Падает импорт окружения msw под ноду
+function addMSWConfig(config) {
+  config.testEnvironmentOptions = {
+    customExportConditions: [''],
+  };
+  return config;
+}
+
+module.exports = addMSWConfig(getClientEnvironment);
