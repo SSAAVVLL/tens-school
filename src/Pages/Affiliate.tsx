@@ -1,15 +1,15 @@
 import {useEffect, useState} from 'react';
-import { testRequest } from '../API';
+import { testRequest, getAffiliate } from '../API/API';
 
 function Page() {
     const [apiRespone, setApiResponse] = useState<object>();
     useEffect(() => {
-        testRequest().then(response => {
+        getAffiliate(150).then(response => {
             setApiResponse(response);
         });
     }, []);
 
-    return (<div>
+    return (<div className="text-3xl">
         {JSON.stringify(apiRespone)}
     </div>);
 }
