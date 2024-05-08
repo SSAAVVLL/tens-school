@@ -1,0 +1,333 @@
+openapi: 3.0.3
+info:
+  title: Tensor School project
+  version: 1.0.0
+  description: >-
+    
+
+    Ссылочки:
+
+    - [Репозиторий с фронтом](https://github.com/SSAAVVLL/tens-school)
+servers:
+  - url: http://127.0.0.1:8888
+
+tags:
+  - name: company
+    description: Апи для получения информации по компании
+  - name: city
+    description: Апи для получения информации по городам
+  - name: affiliate
+    description: Апи для получения информации по филиалам
+paths:
+  /company:
+    post:
+      tags:
+        - company
+      requestBody:
+        description: Запись компании
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Company'
+        required: true
+      summary: Создать компанию по идентификатору
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+    put:
+      tags:
+        - company
+      requestBody:
+        description: Запись компании
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Company'
+        required: true
+      summary: Обновить компанию по идентификатору
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+  /company/{id}:
+    get:
+      tags:
+        - company
+      parameters:
+        - name: id
+          in: path
+          description: ID компании
+          required: true
+          schema:
+            type: integer
+            format: int64
+      summary: Получить компанию по идентификатору
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+    delete:
+      tags:
+        - company
+      parameters:
+        - name: id
+          in: path
+          description: ID компании
+          required: true
+          schema:
+            type: integer
+            format: int64
+      summary: Удалить компанию по идентификатору
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+  /city:
+    post:
+      tags:
+        - city
+      requestBody:
+        description: Запись города
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/City'
+        required: true
+      summary: Создать город по идентификатору
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+    put:
+      tags:
+        - city
+      requestBody:
+        description: Запись городп
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/City'
+        required: true
+      summary: Обновить город по идентификатору
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+  /city/{id}:
+    get:
+      tags:
+        - city
+      parameters:
+        - name: id
+          in: path
+          description: ID города
+          required: true
+          schema:
+            type: integer
+            format: int64
+      summary: Получить город по идентификатору
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+    delete:
+      tags:
+        - city
+      parameters:
+        - name: id
+          in: path
+          description: ID города
+          required: true
+          schema:
+            type: integer
+            format: int64
+      summary: Удалить город по идентификатору
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/City'
+  /affiliate:
+    get:
+      tags:
+        - affiliate
+      parameters:
+        - name: city
+          in: query
+          description: ID города
+          schema:
+            type: integer
+            format: int64
+        - name: company
+          in: query
+          description: ID компании
+          schema:
+            type: integer
+            format: int64
+      summary: Списочный метод получения филиалов
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Affiliate'
+    post:
+      tags:
+        - affiliate
+      requestBody:
+        description: Запись филиала
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Affiliate'
+        required: true
+      summary: Создать филиал
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Affiliate'
+    put:
+      tags:
+        - affiliate
+      requestBody:
+        description: Запись филиала
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Affiliate'
+        required: true
+      summary: Обновить филиал по идентификатору
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Affiliate'
+  /affiliate/{id}:
+    get:
+      tags:
+        - affiliate
+      parameters:
+        - name: id
+          in: path
+          description: ID Филиала
+          required: true
+          schema:
+            type: integer
+            format: int64
+      summary: Получить филиал по идентификатору
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Affiliate'
+    delete:
+      tags:
+        - affiliate
+      parameters:
+        - name: id
+          in: path
+          description: ID Филиала
+          required: true
+          schema:
+            type: integer
+            format: int64
+      summary: Удалить филиал по идентификатору
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Affiliate'
+      
+components:
+  schemas:
+    City:
+      required:
+        - id
+        - name
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        affiliates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Affiliate'
+    Company:
+      required:
+        - id
+        - name
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1053
+        name:
+          type: string
+          example: "ООО Рога и Копыта"
+        affiliates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Affiliate'
+    Affiliate:
+      required:
+        - id
+        - address
+        - id_company
+        - id_city
+      type: object
+      properties:
+        id:
+          type: integer
+        address:
+          type: object
+          properties:
+            street:
+              type: string
+            house:
+              type: string
+            entrance:
+              type: string
+            floor:
+              type: string
+        id_city:
+          type: number
+        id_company:
+          type: number
