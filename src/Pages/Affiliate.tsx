@@ -1,8 +1,9 @@
 import {useEffect, useState} from 'react';
-import { testRequest, getAffiliate } from '../API/API';
+import { testRequest, getAffiliate } from '../API/Manager';
+import IAffiliate from '../Models/Affiliate';
 
 function Page() {
-    const [apiRespone, setApiResponse] = useState<object>();
+    const [apiResponse, setApiResponse] = useState<IAffiliate[]>([]);
     useEffect(() => {
         getAffiliate(150).then(response => {
             setApiResponse(response);
@@ -12,7 +13,7 @@ function Page() {
     return (
     <>
         <div className="text-3xl text-slate-900 text-center">
-            {JSON.stringify(apiRespone)}
+            {apiResponse.map(item => <div>{item.getAddress()}</div>)}
         </div>
     
         <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">

@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw'
-import { TEST_SIMPLE_API, OUR_API_ADDRESS, OUR_API_ENDPOINTS } from '../API/API';
+import { TEST_SIMPLE_API, OUR_API_ADDRESS, OUR_API_ENDPOINTS } from '../API/Manager';
 
 export const handlers = [
     // Intercept "GET ..." requests...

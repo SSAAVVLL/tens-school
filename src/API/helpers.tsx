@@ -1,3 +1,3 @@
-export function fetchGetJson(prom: Promise<Response>): Promise<object> {
+export function fetchGetJson<Type>(prom: Promise<Response>): Promise<Type> {
     return prom.then((res) => res.json());
 }
