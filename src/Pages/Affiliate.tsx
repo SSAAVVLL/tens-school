@@ -1,6 +1,7 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, Suspense} from 'react';
 import { testRequest, getAffiliate } from '../API/Manager';
 import IAffiliate from '../Models/Affiliate';
+import VerySlowComponent from '../Components/VerySlowComponent';
 
 function Page() {
     const [apiResponse, setApiResponse] = useState<IAffiliate[]>([]);
@@ -10,12 +11,16 @@ function Page() {
         });
     }, []);
 
+    const promise = fetch('https://tailwindcss.com/docs/text-color');
     return (
     <>
         <div className="text-3xl text-slate-900 text-center">
-            {apiResponse.map(item => <div>{item.getAddress()}</div>)}
+            {apiResponse.map((item: IAffiliate) => <div key={item._data.id}>{item.getAddress()}</div>)}
         </div>
     
+        <Suspense fallback={<div className="text-black">Загрузка...</div>}>
+            <VerySlowComponent promise={promise}/>
+        </Suspense>
         <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <img

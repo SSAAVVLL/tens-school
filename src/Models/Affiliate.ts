@@ -13,7 +13,7 @@ export interface IData {
 }
 
 export default class {
-    protected _data: IData;
+    public _data: IData;
     constructor(data: IData) {
         this._data = data;
     }

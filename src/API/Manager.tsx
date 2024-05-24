@@ -43,12 +43,7 @@ interface IParams {
 }
 
 export function apiEndpoint(url: string) {
-    return (endpoint: string, params: object) => {
-        const { entity, method, id } = params;
-        return [url, entity, id].join('/');
-        return {
-            getReadEndpoint,
-            getWriteEnpoint
-        };
+    return (endpoint: string) => {
+        return [url, endpoint].join('/');
     }
 }
